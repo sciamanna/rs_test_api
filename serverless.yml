@@ -11,7 +11,7 @@ package:
 
 functions:
   tasks-api:
-    handler: com.serverless.Handler
+    handler: com.sciamanna.Handler
     events:
       - http:
           path: tasks

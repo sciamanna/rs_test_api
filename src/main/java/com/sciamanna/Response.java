@@ -1,4 +1,4 @@
-package com.serverless;
+package com.sciamanna;
 
 import java.util.Map;
 
