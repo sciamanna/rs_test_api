@@ -7,7 +7,7 @@ provider:
   region: eu-west-2
   profile: serverless
 package:
-  artifact: target/hello-dev.jar
+  artifact: target/tasks-api-dev.jar
 
 functions:
   tasks-api:
