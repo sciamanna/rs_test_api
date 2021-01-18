@@ -10,8 +10,8 @@ package:
   artifact: target/tasks-api-dev.jar
 
 functions:
-  tasks-api:
-    handler: com.sciamanna.Handler
+  get-tasks-api:
+    handler: com.sciamanna.GetTasksHandler
     events:
       - http:
           path: /users/{userId}/tasks

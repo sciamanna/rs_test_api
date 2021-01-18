@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
-public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
-	private static final Logger LOG = LogManager.getLogger(Handler.class);
+//public class GetTasksHandler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
+public class GetTasksHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+	private static final Logger LOG = LogManager.getLogger(GetTasksHandler.class);
 
 	@Override
 	//public ApiGatewayResponse handleRequest(ApiGatewayResponse, Context context) {
