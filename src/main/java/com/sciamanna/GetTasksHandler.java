@@ -38,14 +38,10 @@ public class GetTasksHandler implements RequestHandler<APIGatewayProxyRequestEve
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(String.format("jdbc:mysql://%s/%s?user=%s&password=%s",
-//                    "database-rs.cc9xpmrkzlui.eu-west-2.rds.amazonaws.com",
-//                    "tasks",
-//                    "admin",
-//                    "rsdbclave"));
-                    "dbHOST",
-                    "DB",
-                    "dbUSER",
-                    "PASS"));
+                    System.getenv("DB_HOST"),
+                    System.getenv("DB_NAME"),
+                    System.getenv("DB_USER"),
+                    System.getenv("DB_PASSWORD")));
 
             preparedStatement = connection.prepareStatement("SELECT * FROM tasks WHERE userId = ? ");
             preparedStatement.setString(1, userId);

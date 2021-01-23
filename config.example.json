@@ -1,0 +1,6 @@
+{
+  "DB_HOST" : "enter-rds-endpoint",
+  "DB_NAME" : "enter-db",
+  "DB_USER" : "enter-DbUser",
+  "DB_PASSWORD" : "enter-userPassword"
+}
