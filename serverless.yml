@@ -6,7 +6,7 @@ provider:
   runtime: java8
   region: eu-west-2
   profile: serverless
-  enviroment:
+  environment:
     DB_HOST: ${file(./config.dev.json):DB_HOST}
     DB_NAME: ${file(./config.dev.json):DB_NAME}
     DB_USER: ${file(./config.dev.json):DB_USER}
