@@ -6,6 +6,7 @@ provider:
   runtime: java8
   region: eu-west-2
   profile: serverless
+
   environment:
     DB_HOST: ${file(./config.dev.json):DB_HOST}
     DB_NAME: ${file(./config.dev.json):DB_NAME}
@@ -16,13 +17,13 @@ package:
   artifact: target/tasks-api-dev.jar
 
 functions:
-  get-tasks-api:
+  tasks-get-api:
     handler: com.sciamanna.GetTasksHandler
     events:
       - http:
           path: /users/{userId}/tasks
           method: get
-  save-task-api:
+  task-save-api:
     handler: com.sciamanna.SaveTaskHandler
     events:
       - http:
