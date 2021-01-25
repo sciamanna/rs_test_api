@@ -29,10 +29,9 @@ public class GetTasksHandler implements RequestHandler<APIGatewayProxyRequestEve
 
     @Override
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
-        LOG.info("received the request");
-
+        LOG.info("received: {}");
         String userId = request.getPathParameters().get("userId");
-
+        System.out.println(userId);
         List<Task> tasks = new ArrayList<>();
 
         try {
