@@ -6,6 +6,7 @@ provider:
   runtime: java8
   region: eu-west-2
   profile: serverless
+
   environment:
     DB_HOST: ${file(./config.dev.json):DB_HOST}
     DB_NAME: ${file(./config.dev.json):DB_NAME}
@@ -28,5 +29,3 @@ functions:
       - http:
           path: /users/{userId}/tasks
           method: post
-
-          getInitialStock
