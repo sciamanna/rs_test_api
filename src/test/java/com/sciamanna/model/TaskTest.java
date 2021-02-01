@@ -20,4 +20,13 @@ public class TaskTest {
         Task t = new Task();
         assertFalse(t.isCompleted(),"Task status was not false by defaut");
     }
+
+    @DisplayName("Test get task id")
+    @Test
+    public void testId() {
+        Task t = new Task("abc123", "test task", false);
+        assertEquals("abc123", t.getTaskId(), "Task Id incorrect");
+
+    }
+
 }
