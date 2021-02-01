@@ -29,23 +29,28 @@ public class GetTasksHandler implements RequestHandler<APIGatewayProxyRequestEve
 
     @Override
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
-        LOG.info("received: {}");
+        LOG.info("received the request");
         String userId = request.getPathParameters().get("userId");
-        System.out.println(userId);
+        //System.out.println(userId);
         List<Task> tasks = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            LOG.debug("Connecting to database");
+            LOG.debug(String.format("Connecting to database on %s", System.getenv("DB_HOST")));
+            LOG.debug(String.format("DATABASE %s", System.getenv("DB_NAME")));
+            LOG.debug(String.format("User %s", System.getenv("DB_USER")));
+            LOG.debug(String.format("PASSWORD %s", System.getenv("DB_PASSWORD")));
             connection = DriverManager.getConnection(String.format("jdbc:mysql://%s/%s?user=%s&password=%s",
                     System.getenv("DB_HOST"),
                     System.getenv("DB_NAME"),
                     System.getenv("DB_USER"),
                     System.getenv("DB_PASSWORD")));
-
-            preparedStatement = connection.prepareStatement("SELECT * FROM tasks WHERE userId = ? ");
+            LOG.debug("CONNECTION SUCESSFUL");
+            preparedStatement = connection.prepareStatement("SELECT * FROM tasks WHERE userId = ?");
             preparedStatement.setString(1, userId);
             resultSet = preparedStatement.executeQuery();
-
+            LOG.debug("Prepared statements OK");
             while (resultSet.next()) {
                 Task task = new Task(resultSet.getString("taskId"),
                                      resultSet.getString("description"),
@@ -82,8 +87,7 @@ public class GetTasksHandler implements RequestHandler<APIGatewayProxyRequestEve
             if (connection != null) {
                 connection.close();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             LOG.error("Unable to close connections to MySQL -{}", e.getMessage());
         }
     }
